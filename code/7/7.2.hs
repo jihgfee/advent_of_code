@@ -2,16 +2,6 @@ import Data.Map
 import Data.Maybe 
 data Node a = Branch a ([Node a])
 
-printNodes [] = return ()
-printNodes (b:bs) = do
-  printNode b
-  printNodes bs
-
---printNode (Leaf a) = do print a
-printNode (Branch a bs) = do 
-  print a
-  printNodes bs
-
 invertMap m = Data.Map.mapWithKey (\k v -> (v,k)) m
 
 trimChars = [',', '(',')']
@@ -68,7 +58,6 @@ main = do
   let l = Prelude.map (\l -> lineToInput (words l)) (lines input)
   let h = treeHead l
   let n = mkTree h (linesToMap l empty)
-  printNode (updateWeights n)
   print (findCulbrit (updateWeights n))
   --let lines' = map (\l -> if size l == 2 then (hd l, )) lines
   --let n = Branch 5 ((Branch 2 (Leaf 5 : [])) : Leaf 2 : [])
