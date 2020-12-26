@@ -82,5 +82,5 @@ main = do
   let m = processLines (splitOn "\n" input) 0 Data.Map.empty
 
   let finalSeats = repeatIteration m
-  -- putStrLn finalSeats
+  -- putStrLn (mapToString 0 finalSeats)
   print (Data.Map.foldr countPoint 0 finalSeats) 
